@@ -94,7 +94,7 @@ export default class Routes extends Component {
       hasBack={this.state.hasBack}
       backPressed={this._back}
       show={true}
-      title={"Awesome navbar"}
+      title={"Calculator"}
       openMenu={this._openMenu}
       closeMenu = {this._closeMenu}
       initialRoute={APP_ROUTES.HOME}
@@ -105,7 +105,6 @@ export default class Routes extends Component {
       isMenuOpen = {this.state.menuOpen}
       buttonName = {"Logout"}
       backIcon = {backIcon}
-      menuIcon = {menuIcon}
       menuItems = {["button1" , "button2" , "button3"]}
       sceneStyle={ styles.fullPage}
     />
