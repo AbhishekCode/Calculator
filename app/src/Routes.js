@@ -9,6 +9,7 @@ import {
   View,
   Navigator,
   Dimensions,
+  Platform,
   StyleSheet
 } from 'react-native';
 
@@ -25,7 +26,7 @@ export let APP_ROUTES = {
   ONE: {name: 'pageOne' , title:'pageOne'},
   TWO: {name: 'pageTwo' , title:'pageTwo'}
 };
-
+const NAV_BAR_HEIGHT = (Platform.OS === 'android' ? 48 : 44) + (Platform.OS === 'android' ? 0 : 20);
 
 export default class Routes extends Component {
 
@@ -107,6 +108,8 @@ export default class Routes extends Component {
       backIcon = {backIcon}
       menuItems = {["button1" , "button2" , "button3"]}
       sceneStyle={ styles.fullPage}
+      navbarStyle={ styles.navBarStyle}
+      statusBarColor="#327ab9"
     />
     );
   }
@@ -126,6 +129,16 @@ const styles = StyleSheet.create({
   appView: {
     flex: 1,
     backgroundColor: '#ffffff'
+  },
+
+  navBarStyle : {
+    backgroundColor: '#327ab9',
+    position: 'absolute',
+    top: 0,
+    overflow: 'visible',
+    width:  getWidth(),
+    height: NAV_BAR_HEIGHT,
+    alignItems:'center'
   },
 
   fullPage: {

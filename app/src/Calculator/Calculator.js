@@ -6,7 +6,6 @@ import React, {Component} from 'react';
 import {
   Text,
   View,
-  TextInput,
   TouchableHighlight,
   Platform,
   StyleSheet
@@ -15,7 +14,9 @@ import {
 import Keypad from './Keypad/Keypad';
 
 
-const NAV_BAR_HEIGHT = (Platform.OS === 'android' ? 48 : 44);
+const NAV_BAR_HEIGHT = (Platform.OS === 'android' ? 48 : 44) + (Platform.OS === 'android' ? 0 : 20);
+
+
 
 export default class Calculator extends Component {
 
@@ -58,12 +59,9 @@ export default class Calculator extends Component {
   render() {
     return (
       <View style={styles.calcContainer}>
-        <TextInput
-          style={styles.textInput}
-          onChangeText={(text) => this.setState({text})}
-          value={this.state.displayString}
-        />
-
+          <View style={styles.textInputContainer}>
+             <Text style={styles.textInputValue}>{this.state.displayString}</Text>
+          </View>
           <Keypad onKeyPress={this._onKeyPress}/>
       </View>
     );
@@ -72,15 +70,22 @@ export default class Calculator extends Component {
 const styles = StyleSheet.create({
   calcContainer: {
     flex: 1,
-    marginTop: NAV_BAR_HEIGHT+ 20,
-    backgroundColor: '#327ab9'
+    marginTop: NAV_BAR_HEIGHT,
+    backgroundColor: '#327ab9',
+    ...Platform.select({
+      android: {
+        marginBottom: 20
+      }
+    }),
   },
-  textInput: {
+  textInputContainer: {
     borderColor: 'gray',
     backgroundColor:'white',
     borderWidth: 4,
     paddingHorizontal: 10,
-    paddingVertical: 30,
+    paddingVertical: 30
+  },
+  textInputValue: {
     fontSize: 40,
     textAlign: 'right'
   }
