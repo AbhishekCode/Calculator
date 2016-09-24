@@ -29,7 +29,7 @@ class Calculator extends Component {
   _onKeyPress = (value) => {
     let newDisplayString = this.props.displayString;
 
-    if (value === 'DEL') {
+    if (value === 'CLR') {
       newDisplayString = ''
       this.props.dispatch(clearAll(newDisplayString));
     } else if (value === '+' || value === '-' || value === '×' || value === '/') {
@@ -37,7 +37,7 @@ class Calculator extends Component {
         newDisplayString = '0';
       }
       let lastString = newDisplayString.charAt(newDisplayString.length - 1);
-      if (lastString === '+' || lastString === '-' || lastString === '×' || lastString === '/') {
+      if (lastString === '+' || lastString === '-' || lastString === '*' || lastString === '/') {
         newDisplayString = newDisplayString.slice(0, newDisplayString.length - 1);
       }
       newDisplayString = (value === '×') ? eval(newDisplayString) + '*' : eval(newDisplayString) + value;
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   calcContainer: {
     flex: 1,
     marginTop: NAV_BAR_HEIGHT,
-    backgroundColor: '#327ab9',
+    backgroundColor: '#0097A7',
     ...Platform.select({
       android: {
         marginBottom: 20

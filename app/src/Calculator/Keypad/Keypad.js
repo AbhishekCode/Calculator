@@ -47,7 +47,7 @@ export default class Keypad extends Component {
           <Key value={1} onKeyPress={this._onKeyPress}/>
         </View>
         <View style={styles.row}>
-          <Key value={'DEL'} onKeyPress={this._onKeyPress}/>
+          <Key value={'CLR'} onKeyPress={this._onKeyPress}/>
           <Key value={0} onKeyPress={this._onKeyPress}/>
           <Key value={'='} onKeyPress={this._onKeyPress}/>
         </View>
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   container: {
     flex:1,
     flexDirection: 'column',
-    backgroundColor: '#327ab9',
+    backgroundColor: '#636363',
     justifyContent: "flex-end",
   },
   row : {

@@ -109,7 +109,7 @@ export default class Routes extends Component {
       menuItems = {["button1" , "button2" , "button3"]}
       sceneStyle={ styles.fullPage}
       navbarStyle={ styles.navBarStyle}
-      statusBarColor="#327ab9"
+      statusBarColor="#0097A7"
     />
     );
   }
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
   },
 
   navBarStyle : {
-    backgroundColor: '#327ab9',
+    backgroundColor: '#0097A7',
     position: 'absolute',
     top: 0,
     overflow: 'visible',

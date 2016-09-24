@@ -7,8 +7,11 @@ import {
   Text,
   View,
   TouchableHighlight,
+  Platform,
   StyleSheet
 } from 'react-native';
+
+import {ButtonAndroid} from "react-native-android-kit";
 
 export default class key extends Component {
 
@@ -21,11 +24,25 @@ export default class key extends Component {
   };
 
   render() {
-    return (
-      <TouchableHighlight style={styles.container} onPress={this._onPress}>
-         <Text style={styles.text}>{this.props.value}</Text>
-      </TouchableHighlight>
-    );
+    if(Platform.OS === 'android') {
+      return (
+        <View style={styles.container} onPress={this._onPress}>
+          <ButtonAndroid
+            textColor='white'
+            backgroundColor='#434343'
+            textSize={20}
+            text={this.props.value.toString()}
+            onPress={this._onPress}
+          />
+        </View>
+      );
+    } else {
+      return (
+        <TouchableHighlight style={styles.container} onPress={this._onPress}>
+          <Text style={styles.text}>{this.props.value}</Text>
+        </TouchableHighlight>
+      );
+    }
   }
 }
 const styles = StyleSheet.create({
@@ -34,8 +51,13 @@ const styles = StyleSheet.create({
     width: 50,
     height:50,
     backgroundColor: '#434343',
-    borderWidth:1,
-    borderColor:'black'
+    ...Platform.select({
+      ios: {
+        borderWidth:1,
+        borderColor:'black'
+      }
+    }),
+
   },
   text : {
      fontSize: 35,
